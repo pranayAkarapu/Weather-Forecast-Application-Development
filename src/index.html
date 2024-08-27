@@ -3,11 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather Forecast Forecast</title>
     <link rel="stylesheet" href="/dist/output.css">
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Poppins'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-<body>
-    <h1 class="underline uppercase bg-red-300">hello</h1>
-    <p class="underline bg-slate-500">hhihkjsh</p>
+<body class="bg-blue-200 font-['Poppins']">
+
+
+    <div class="max-w-4xl mx-auto lg:mt-14  bg-cyan-950 text-white lg:rounded-lg shadow-lg">
+        <!-- Header -->
+        <header class="bg-blue-800 p-4 mt-0 lg:rounded-lg text-blacktext-center">
+            <h1 class="text-2xl text-center font-bold">Weather Forecast</h1>
+        </header>
+
+
+        <main class="p-4 lg:p-8">
+            <!-- search info-->
+            <section class="flex flex-col p-4 md:flex-row md:justify-between items-center mb-8">
+                <div>
+                    <h1 id="cityName" class="text-3xl font-bold"></h1>
+                    <p class="text-gray-300"><span id="day"></span>, <span id="date"></span></p>
+                </div>
+                <div class="mt-8 md:mt-0 flex items-center space-x-4">
+                    <input id="searchInput" type="text" placeholder="Enter city name" list="recentCities" class="px-2 py-2 rounded bg-blue-200 text-black focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    <datalist id="recentCities"></datalist>
+                    <button id="searchButton" type="button" class="bg-blue-700 px-2 py-2 rounded hover:bg-blue-600 focus:outline-none">Search</button>
+                    <button id="locationButton" aria-label="search" type="button" class="bg-blue-700 p-2 rounded hover:bg-blue-600 focus:outline-none">
+                        <p><i class="fa-solid fa-location-crosshairs"></i></p>
+                    </button>
+                </div>
+            </section>
+    
+            <!-- Current Weather Section -->
+            <section id="weatherInfo" class="flex flex-col md:flex-row md:justify-between items-center mb-8">
+                <div>
+                    <p id="temperature" class="text-7xl font-bold"></p>
+                    <p id="description" class="text-1xl"></p>
+                </div>
+                <div class="mt-9 md:mt-0 flex items-center">
+                    <div class="flex items-center space-x-2">
+                        <p id="icon" class="w-30 h-30 text-4xl">
+
+                        </p>
+                        <div class="text-gray-300">
+                            <p>Precipitation: <span id="precipitation"></span></p>
+                            <p>Humidity: <span id="humidity"></span></p>
+                            <p>Wind: <span id="wind"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5-Day Forecast Section -->
+            <section class="mb-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
+                    <!-- Day 1 -->
+                    <div class="bg-blue-600 p-4 rounded-lg flex flex-col justify-center items-center ">
+                        <p class="font-semibold text-lg"><span id="day1"></span>, <span id="date1"></span></p>
+                        <p id="icon1" class="w-10 h-10 ">
+
+                        </p>
+                        <p class="">Temp: <span id="temperature1"></span></p>
+                        <p class="">Humidity: <span id="humidity1"></span></p>
+                        <p class="">Wind: <span id="wind1"></span></p>
+                    </div>
+                    <!-- Day 2 -->
+                    <div class="bg-blue-600 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <p class="font-semibold text-lg"><span id="day2"></span>, <span id="date2"></span></p>
+                        <p id="icon2" class="w-10 h-10">
+
+                        </p>
+                        <p class="">Temp: <span id="temperature2"></span></p>
+                        <p class="">Humidity: <span id="humidity2"></span></p>
+                        <p class="">Wind: <span id="wind2"></span></p>
+                    </div>
+                    <!-- Day 3 -->
+                    <div class="bg-blue-600 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <p class="font-semibold text-lg"><span id="day3"></span>, <span id="date3"></span></p>
+                        <p id="icon3" class="w-10 h-10">
+
+                        </p>
+                        <p class="">Temp: <span id="temperature3"></span></p>
+                        <p class="">Humidity: <span id="humidity3"></span></p>
+                        <p class="">Wind: <span id="wind3"></span></p>
+                    </div>
+                    <!-- Day 4 -->
+                    <div class="bg-blue-600 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <p class="font-semibold text-lg"><span id="day4"></span>, <span id="date4"></span></p>
+                        <p id="icon4" class="w-10 h-10">
+
+                        </p>
+                        <p class="">Temp: <span id="temperature4"></span></p>
+                        <p class="">Humidity: <span id="humidity4"></span></p>
+                        <p class="">Wind: <span id="wind4"></span></p>
+                    </div>
+                    <!--- Day 5---->  
+                    <div class="bg-blue-600 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <p class="font-semibold text-lg"><span id="day5"></span>, <span id="date5"></span></p>
+                        <p id="icon5" class="w-10 h-10 flex justify-center">
+
+                        </p>
+                        <p class="">Temp: <span id="temperature5"></span></p>
+                        <p class="">Humidity: <span id="humidity5"></span></p>
+                        <p class="">Wind: <span id="wind5"></span></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js" charset="UTF-8"></script>
 </body>
 </html>
