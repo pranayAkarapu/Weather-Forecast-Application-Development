@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Forecast Forecast</title>
+    <title>Weather Forecast Application Development</title>
     <link rel="stylesheet" href="/dist/output.css">
     <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Poppins'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -25,10 +25,10 @@
                     <h1 id="cityName" class="text-3xl font-bold"></h1>
                     <p class="text-gray-300"><span id="day"></span>, <span id="date"></span></p>
                 </div>
-                <div class="mt-8 md:mt-0 flex items-center space-x-4">
+                <div class="mt-8 md:mt-0 flex items-center space-x-2 lg:space-x-4">
                     <input id="searchInput" type="text" placeholder="Enter city name" list="recentCities" class="px-2 py-2 rounded bg-blue-200 text-black focus:outline-none focus:ring-2 focus:ring-blue-400">
                     <datalist id="recentCities"></datalist>
-                    <button id="searchButton" type="button" class="bg-blue-700 px-2 py-2 rounded hover:bg-blue-600 focus:outline-none">Search</button>
+                    <button id="searchButton" type="button" class="bg-blue-700 p-2 rounded hover:bg-blue-600 focus:outline-none">Search</button>
                     <button id="locationButton" aria-label="search" type="button" class="bg-blue-700 p-2 rounded hover:bg-blue-600 focus:outline-none">
                         <p><i class="fa-solid fa-location-crosshairs"></i></p>
                     </button>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="mt-9 md:mt-0 flex items-center">
                     <div class="flex items-center space-x-2">
-                        <p id="icon" class="w-30 h-30 text-4xl">
+                        <p id="icon">
 
                         </p>
                         <div class="text-gray-300">

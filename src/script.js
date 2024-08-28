@@ -96,24 +96,41 @@ function getWeatherDeatils(cityName, lat, lon){
         document.getElementById("wind").innerHTML = `${Math.round(currentWeather.wind.speed)} m/s`
         
         const iconCode = currentWeather.weather[0].icon;
-        document.getElementById("icon").innerHTML = `<img src="http://openweathermap.org/img/wn/${iconCode}.png" alt="Weather Icon">`;
+        const imgWidth = 100;
+        const imgHeight = 100;
+        document.getElementById("icon").innerHTML = `<img src="http://openweathermap.org/img/wn/${iconCode}.png" alt="Weather Icon" width="${imgWidth}" height="${imgHeight}">`;
 
 
         /*---------To display data in 5 day weather forecast section-------*/
-        for (let i = 0; i < 5; i++){ 
-            const forecast = data.list[i * 8];
+        let daysProcessed = 0;
+        let lastProcessedDate = '';
+
+        for (let i = 0; i < data.list.length && daysProcessed < 5; i++){ 
+            const forecast = data.list[i];
             const date = new Date(forecast.dt_txt);
-            const day = date.toLocaleDateString('en-US', { weekday: 'long' });
-            const formattedDate = date.toLocaleDateString('en-US');
+            const currentDate = date.toLocaleDateString('en-US');
 
-            document.getElementById(`day${i + 1}`).innerHTML = day
-            document.getElementById(`date${i + 1}`).innerHTML = formattedDate;
-            document.getElementById(`temperature${i + 1}`).innerHTML = `${Math.round((forecast.main.temp - 273.15).toFixed(2))} °C`;
-            document.getElementById(`humidity${i + 1}`).innerHTML = `${forecast.main.humidity} %`;
-            document.getElementById(`wind${i + 1}`).innerHTML = `${Math.round(forecast.wind.speed)} m/s`;
+            const today = new Date().toLocaleDateString('en-US');
+            if(currentDate === today){
+                continue;
+            }
 
-            const iconForecastCode = forecast.weather[0].icon;
-            document.getElementById(`icon${i + 1}`).innerHTML = `<img src="http://openweathermap.org/img/wn/${iconForecastCode}.png" alt="Weather Icon">`;
+            if(currentDate !== lastProcessedDate){
+                lastProcessedDate = currentDate;
+                daysProcessed++;
+
+                const day = date.toLocaleDateString('en-US', { weekday: 'long' });
+                const formattedDate = date.toLocaleDateString('en-US');
+
+                document.getElementById(`day${daysProcessed}`).innerHTML = day
+                document.getElementById(`date${daysProcessed}`).innerHTML = formattedDate;
+                document.getElementById(`temperature${daysProcessed}`).innerHTML = `${Math.round((forecast.main.temp - 273.15).toFixed(2))} °C`;
+                document.getElementById(`humidity${daysProcessed}`).innerHTML = `${forecast.main.humidity} %`;
+                document.getElementById(`wind${daysProcessed}`).innerHTML = `${Math.round(forecast.wind.speed)} m/s`;
+
+                const iconForecastCode = forecast.weather[0].icon;
+                document.getElementById(`icon${daysProcessed}`).innerHTML = `<img src="http://openweathermap.org/img/wn/${iconForecastCode}.png" alt="Weather Icon"">`;
+            }
         }
     })
     .catch(error => {
