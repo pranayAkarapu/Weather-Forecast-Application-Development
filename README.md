@@ -14,7 +14,7 @@ This project is a weather forecasting web application that allows users to searc
 -> The UI is responsive and works well on various screen sizes, including desktop, iPad Mini, and iPhone SE.
 
 
-**GitHub Repository Link**: https://github.com/pranayAkarapu/Weather-Forecast-Project.git
-
 -> This project is tracked using Git for version control. The Git repository has been initialized to
    manage and track changes throughout the development process.
+
+   

@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Forecast Application Development</title>
-    <link rel="stylesheet" href="/dist/output.css">
+    <link rel="stylesheet" href="../dist/output.css">
     <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Poppins'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body class="bg-blue-200 font-['Poppins']">
 
 
-    <div class="max-w-4xl mx-auto lg:mt-14  bg-cyan-950 text-white lg:rounded-lg shadow-lg">
+    <div class="max-w-4xl mx-auto lg:mt-14 bg-gradient-to-r from-blue-500 to-blue-800 text-white lg:rounded-lg shadow-lg">
         <!-- Header -->
-        <header class="bg-blue-800 p-4 mt-0 lg:rounded-lg text-blacktext-center">
+        <header class="bg-blue-500 p-4 mt-0 lg:rounded-lg text-blacktext-center">
             <h1 class="text-2xl text-center font-bold">Weather Forecast</h1>
         </header>
 
@@ -25,11 +25,11 @@
                     <h1 id="cityName" class="text-3xl font-bold"></h1>
                     <p class="text-gray-300"><span id="day"></span>, <span id="date"></span></p>
                 </div>
-                <div class="mt-8 md:mt-0 flex items-center space-x-2 lg:space-x-4">
-                    <input id="searchInput" type="text" placeholder="Enter city name" list="recentCities" class="px-2 py-2 rounded bg-blue-200 text-black focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <div class="mt-8 md:mt-0 flex items-center space-x-2 lg:space-x-2">
+                    <input id="searchInput" type="text" placeholder="Enter city name" list="recentCities" class="px-2 py-2 rounded bg-gry-200 text-black focus:outline-none focus:ring-2 focus:ring-blue-400">
                     <datalist id="recentCities"></datalist>
-                    <button id="searchButton" type="button" class="bg-blue-700 p-2 rounded hover:bg-blue-600 focus:outline-none">Search</button>
-                    <button id="locationButton" aria-label="search" type="button" class="bg-blue-700 p-2 rounded hover:bg-blue-600 focus:outline-none">
+                    <button id="searchButton" type="button" class="bg-blue-500 p-2 rounded hover:bg-blue-700 focus:outline-none">Search</button>
+                    <button id="locationButton" aria-label="search" type="button" class="bg-blue-500 p-2 rounded text-gray-100 hover:bg-blue-700 focus:outline-none">
                         <p><i class="fa-solid fa-location-crosshairs"></i></p>
                     </button>
                 </div>
@@ -46,7 +46,7 @@
                         <p id="icon">
 
                         </p>
-                        <div class="text-gray-300">
+                        <div class="text-white">
                             <p>Precipitation: <span id="precipitation"></span></p>
                             <p>Humidity: <span id="humidity"></span></p>
                             <p>Wind: <span id="wind"></span></p>
@@ -59,7 +59,7 @@
             <section class="mb-4">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
                     <!-- Day 1 -->
-                    <div class="bg-blue-600 p-4 rounded-lg flex flex-col justify-center items-center ">
+                    <div class="bg-blue-500 p-4 rounded-lg flex flex-col justify-center items-center ">
                         <p class="font-semibold text-lg"><span id="day1"></span>, <span id="date1"></span></p>
                         <p id="icon1" class="w-10 h-10 ">
 
@@ -69,7 +69,7 @@
                         <p class="">Wind: <span id="wind1"></span></p>
                     </div>
                     <!-- Day 2 -->
-                    <div class="bg-blue-600 p-4 rounded-lg flex flex-col justify-center items-center">
+                    <div class="bg-blue-500 p-4 rounded-lg flex flex-col justify-center items-center">
                         <p class="font-semibold text-lg"><span id="day2"></span>, <span id="date2"></span></p>
                         <p id="icon2" class="w-10 h-10">
 
@@ -79,7 +79,7 @@
                         <p class="">Wind: <span id="wind2"></span></p>
                     </div>
                     <!-- Day 3 -->
-                    <div class="bg-blue-600 p-4 rounded-lg flex flex-col justify-center items-center">
+                    <div class="bg-blue-500 p-4 rounded-lg flex flex-col justify-center items-center">
                         <p class="font-semibold text-lg"><span id="day3"></span>, <span id="date3"></span></p>
                         <p id="icon3" class="w-10 h-10">
 
@@ -89,7 +89,7 @@
                         <p class="">Wind: <span id="wind3"></span></p>
                     </div>
                     <!-- Day 4 -->
-                    <div class="bg-blue-600 p-4 rounded-lg flex flex-col justify-center items-center">
+                    <div class="bg-blue-500 p-4 rounded-lg flex flex-col justify-center items-center">
                         <p class="font-semibold text-lg"><span id="day4"></span>, <span id="date4"></span></p>
                         <p id="icon4" class="w-10 h-10">
 
@@ -99,7 +99,7 @@
                         <p class="">Wind: <span id="wind4"></span></p>
                     </div>
                     <!--- Day 5---->  
-                    <div class="bg-blue-600 p-4 rounded-lg flex flex-col justify-center items-center">
+                    <div class="bg-blue-500 p-4 rounded-lg flex flex-col justify-center items-center">
                         <p class="font-semibold text-lg"><span id="day5"></span>, <span id="date5"></span></p>
                         <p id="icon5" class="w-10 h-10 flex justify-center">
 
