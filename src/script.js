@@ -82,12 +82,12 @@ function getWeatherDeatils(cityName, lat, lon){
 
         /*--------To display data in current weather section------*/
         const currentWeather = data.list[0];
-        const currentDate = new Date(currentWeather.dt_txt);
+        const currentDate = new Date();
         const day = currentDate.toLocaleString('en-US', { weekday: 'long'});
-        const formattedDate = currentDate.toLocaleDateString('en-US');
+        const currentForecastDate = currentDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric'});
 
         document.getElementById("day").innerHTML = day;
-        document.getElementById("date").innerHTML = formattedDate;
+        document.getElementById("date").innerHTML = currentForecastDate;
         document.getElementById("cityName").innerHTML = cityName;
         document.getElementById("temperature").innerHTML = `${Math.round((currentWeather.main.temp-273.15).toFixed(2))}°C`;
         document.getElementById("description").innerHTML = currentWeather.weather[0].description;
@@ -102,34 +102,34 @@ function getWeatherDeatils(cityName, lat, lon){
 
 
         /*---------To display data in 5 day weather forecast section-------*/
-        let daysProcessed = 0;
-        let lastProcessedDate = '';
+        let dayIndex = 1;
+        let lastDate = null;
 
-        for (let i = 0; i < data.list.length && daysProcessed < 5; i++){ 
+        for (let i = 0; i < data.list.length ; i++){ 
             const forecast = data.list[i];
-            const date = new Date(forecast.dt_txt);
-            const currentDate = date.toLocaleDateString('en-US');
+            const forecastDate = new Date(forecast.dt_txt);
 
-            const today = new Date().toLocaleDateString('en-US');
-            if(currentDate === today){
+            if (forecastDate.getDate() === currentDate.getDate()) {
                 continue;
             }
 
-            if(currentDate !== lastProcessedDate){
-                lastProcessedDate = currentDate;
-                daysProcessed++;
+            if (lastDate === null || forecastDate.getDate() !== lastDate.getDate()) {
+            if(dayIndex <= 5){
 
-                const day = date.toLocaleDateString('en-US', { weekday: 'long' });
-                const formattedDate = date.toLocaleDateString('en-US');
+                const day = forecastDate.toLocaleDateString('en-US', { weekday: 'long' });
+                const forecastDateStr = forecastDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
-                document.getElementById(`day${daysProcessed}`).innerHTML = day
-                document.getElementById(`date${daysProcessed}`).innerHTML = formattedDate;
-                document.getElementById(`temperature${daysProcessed}`).innerHTML = `${Math.round((forecast.main.temp - 273.15).toFixed(2))} °C`;
-                document.getElementById(`humidity${daysProcessed}`).innerHTML = `${forecast.main.humidity} %`;
-                document.getElementById(`wind${daysProcessed}`).innerHTML = `${Math.round(forecast.wind.speed)} m/s`;
-
+                document.getElementById(`day${dayIndex}`).innerHTML = day;
+                document.getElementById(`date${dayIndex}`).innerHTML = forecastDateStr;
+                document.getElementById(`temperature${dayIndex}`).innerHTML = `${Math.round((forecast.main.temp - 273.15).toFixed(2))} °C`;
+                document.getElementById(`humidity${dayIndex}`).innerHTML = `${forecast.main.humidity} %`;
+                document.getElementById(`wind${dayIndex}`).innerHTML = `${Math.round(forecast.wind.speed)} m/s`;
                 const iconForecastCode = forecast.weather[0].icon;
-                document.getElementById(`icon${daysProcessed}`).innerHTML = `<img src="http://openweathermap.org/img/wn/${iconForecastCode}.png" alt="Weather Icon"">`;
+                document.getElementById(`icon${dayIndex}`).innerHTML = `<img src="http://openweathermap.org/img/wn/${iconForecastCode}.png" alt="Weather Icon"">`;
+
+                dayIndex++;
+                lastDate = forecastDate;
+            }
             }
         }
     })
